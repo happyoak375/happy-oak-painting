@@ -1,0 +1,541 @@
+:root {
+    --brown: #281a0c;
+    --white: #fff;
+    --black: #000;
+}
+
+
+body {
+    font-family: Roboto, "Open Sans", sans-serif ;
+    font-size: 16px;
+}
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.back-to-top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff8e1;
+    color: #6d4c2f;
+    border: 1px solid #b08a4f;
+    border-radius: 20px;
+    padding: 6px 18px 6px 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    margin: 24px 0;
+}
+.back-to-top-link:hover {
+    background: #ffe7b3;
+    color: #b08a4f;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    text-decoration: none;
+}
+.back-to-top-link span {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #b08a4f;
+    opacity: 0.85;
+    font-weight: 500;
+}
+
+/******************  Header  ******************/
+ header {
+     width: 100%;
+     background: url(../img/header-bg-1.png) var(--brown);
+     background-size: cover;
+     background-attachment: fixed;
+ }
+ header h1 {
+     color: var(--white);
+     font-size: 50px;
+     font-weight: 700;
+     text-align: center;
+     padding: 10px 0;
+ }
+header .container {
+    position: relative;
+    height: 700px;
+}
+header .menu {
+    width: 100%;
+    text-align: right;
+}
+header .menu a {
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    margin: 10px 20px;
+    text-decoration: none;
+    position: relative;
+}
+header .menu a:hover {
+    /* text-decoration: underline; */
+    background: rgba(134, 3, 3, 0.8);
+    padding: 0px 10px;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+header .texts {
+    width: 100%;
+    color: var(--white);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -52px;
+}
+header .texts .name {
+    font-size: 50px;
+    font-weight: 700;
+}
+header .texts h3 {
+    font-weight: 600;
+    font-size: 40px;
+    font-style: italic;
+    text-align: center;
+}
+
+/******************  Main  ******************/
+main {
+    background: url(../img/HOPLogoBG.png);
+    background-repeat: repeat;
+}
+
+/******************  About  ******************/
+
+main .about {
+    position: relative;
+    min-height: 400px;
+    padding: 60px 0;
+    background: none;
+}
+main .about .container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: block;
+    padding: 0;
+}
+main .about .picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+main .about .picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    filter: blur(1px);
+}
+
+main .about article {
+    position: fixed;
+    top: 500px; /* Adjust as needed for your header height */
+    left: 20%;
+    transform: translateX(-50%);
+    width: 60%;
+    min-width: 260px;
+    background: rgba(255,255,255,0.92);
+    padding: 40px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, .25);
+    border-radius: 10px;
+    z-index: 2;
+}
+
+main .about article h3 {
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+main .about article p {
+    line-height: 28px;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 800px) {
+    main .about .container {
+        height: auto;
+        min-height: 300px;
+    }
+    main .about article {
+        width: 90%;
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 400px) {
+    main .about article h3 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+}
+
+/******************  Services  ******************/
+main .services {
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+main .services .title {
+    font-size: 40px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 40px;
+}
+main .services .container {
+    border: 1px double var(--brown);
+    background: var(--white);
+    color: var(--black);
+    padding: 10px;
+    overflow: hidden;
+}
+main .services .service {
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+}
+main .services .service {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 4px dotted var(--black);
+    overflow: hidden;
+    display: flex;
+}
+main .services .service-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+main .service .description-text {
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    padding: 10px;
+}
+main .service .description {
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 15px;
+    float: left;
+}
+main .services .picture {
+    margin-bottom: 15px;
+    width: 100%;
+}
+.service-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    transition: all 0.2s;
+}
+/******************  Gallery  ******************/
+main .gallery {
+    overflow: hidden;
+}
+main .gallery .title {
+    font-size: 40px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 40px; 
+}
+main .gallery .picture {
+    width: 50%;
+    float: left;
+}
+main .gallery .picture img {
+    width: 100%;
+    vertical-align: top;
+    opacity: .7;
+}
+main .gallery .picture:hover img {
+    opacity: 1;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .9s ease;
+    transition: all .9s ease;
+}
+
+/******************  Gallery Responsive Grid  ******************/
+main .gallery .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+main .gallery .grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    background: #fff;
+    transition: transform 0.2s;
+}
+.grid-item img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+main .gallery .grid-item img {
+    width: 100%;
+    display: block;
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0.85;
+}
+main .gallery .grid-item:hover img {
+    opacity: 1;
+    transform: scale(1.04);
+}
+main .gallery .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(40,26,12,0.85);
+    color: #fff;
+    font-size: 1rem;
+    padding: 8px 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
+}
+main .gallery .grid-item:hover .caption {
+    opacity: 1;
+}
+
+@media screen and (max-width: 600px) {
+    main .gallery .grid {
+        gap: 12px;
+    }
+    main .gallery .caption {
+        font-size: 0.9rem;
+        padding: 6px 8px;
+    }
+}
+
+/* ******************  Reviews  ******************/
+.reviews .container {
+    background-color: beige;
+    padding: 30px;
+    text-align: center;
+}
+main .reviews .title {
+    text-align: Center;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+main .reviews .text {
+    text-align: Center;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.testimonial-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    position: relative;
+}
+.testimonial-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.testimonial-card .paragraph {
+    font-size: 1.1rem;
+    color: #333;
+    font-style: italic;
+    line-height: 1.5; /* Try lowering this value if you want lines closer together */
+    margin-bottom: 0;
+}
+.quote-mark {
+    font-size: 2rem;
+    color: #b08a4f;
+    vertical-align: top;
+}
+/******************  Contact  ******************/
+main .contact .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+}
+main .contact .address,
+main .contact .phones {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+    main .contact .address,
+    main .contact .phones {
+        flex: 1 1 48%;
+        text-align: left;
+    }
+}
+
+
+
+
+
+
+main .contact {
+    background: var(--white);
+    padding: 60px;
+}
+main .contact .title {
+    text-align: Center;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+main .contact .address {
+    float: left;
+    width: 50%;
+    text-align: left;
+    font-size: 22px;
+}
+main .contact .phones {
+    float: right;
+    width: 50%;
+    text-align: right;
+    font-size: 22px;
+}
+
+.contact-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    font-size: 1.1rem;
+}
+.contact-icon {
+    font-size: 1.3em;
+    color: #b08a4f;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+/******************  Footer  ******************/
+footer {
+    background: var(--brown, #6d4c2f);
+    color: var(--white, #fff);
+    padding: 24px 0 12px 0;
+}
+.footer-links {
+    margin-bottom: 8px;
+}
+.footer-links a {
+    color: #ffe7b3;
+    text-decoration: none;
+    margin: 0 8px;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+footer .copyright {
+    text-align: center;
+    font-size: 0.98rem;
+}
+.footer-social img {
+    filter: grayscale(30%);
+    transition: filter 0.2s;
+}
+.footer-social img:hover {
+    filter: none;
+}
+/******************  Media Querries  ******************/
+@media screen and (max-width: 800px) {
+    header .container{
+        position: static;
+        height: auto;
+    }
+    header .texts {
+        position: static;
+        margin: 100px 0;
+    }
+    header .menu {
+        text-align: center;
+    }
+    header .menu a {
+        margin: 10px 20px;
+    }
+    header .texts .name {
+        font-size: 30px;
+    }
+    header .texts h3 {
+        font-size: 18px;
+    }
+    main .about .picture {
+        width: 100%;
+        position: relative;
+    }
+    main .about article {
+        position: relative;
+        width: 100%;
+        margin: auto;
+        top: -50px;
+        transform: translate(0px, 0);
+    }
+    main .services {
+        padding-top: 300px;
+    }
+    main .services .service {
+        width: 100%;
+    }
+    main .service .desription {
+        width: 50%;
+    }
+    main .service .picture {
+        width: 50%;
+    }
+    main .contact .title {
+        font-size: 30px;
+    }
+    main .contact .address {
+        width: 100%;
+        font-size: 22px;
+        text-align: center;
+    }
+    main .contact .phones {
+        width: 100%;
+        font-size: 22px;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 400px) {
+    main .about article h3 {
+        font-size: 34px;
+        margin-bottom: 10px;
+    }
+    main .contact .title {
+        font-size: 22px;
+    }
+    main .contact .address {
+        font-size: 16px;
+    }
+    main .contact .phones {
+        font-size: 16px;
+    }
+}
+
