@@ -8,6 +8,7 @@ body {
   font-family: Roboto, "Open Sans", sans-serif;
   font-size: 16px;
 }
+
 .container {
   width: 90%;
   max-width: 1000px;
@@ -34,12 +35,14 @@ body {
     box-shadow 0.2s;
   margin: 24px 0;
 }
+
 .back-to-top-link:hover {
   background: #ffe7b3;
   color: #b08a4f;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   text-decoration: none;
 }
+
 .back-to-top-link span {
   font-size: 0.95rem;
   letter-spacing: 1px;
@@ -49,13 +52,14 @@ body {
   font-weight: 500;
 }
 
-/******************  Header  ******************/
+/****************** Header  ******************/
 header {
   width: 100%;
   background: url(../img/header-bg-1.png) var(--brown);
   background-size: cover;
   background-attachment: fixed;
 }
+
 header h1 {
   color: var(--white);
   font-size: 50px;
@@ -63,14 +67,17 @@ header h1 {
   text-align: center;
   padding: 10px 0;
 }
+
 header .container {
   position: relative;
   height: 700px;
 }
+
 header .menu {
   width: 100%;
   text-align: right;
 }
+
 header .menu a {
   color: var(--white);
   font-size: 20px;
@@ -80,13 +87,14 @@ header .menu a {
   text-decoration: none;
   position: relative;
 }
+
 header .menu a:hover {
-  /* text-decoration: underline; */
   background: rgba(134, 3, 3, 0.8);
   padding: 0px 10px;
   border-radius: 5px;
   transition: background 0.2s;
 }
+
 header .texts {
   width: 100%;
   color: var(--white);
@@ -95,21 +103,12 @@ header .texts {
   transform: translateY(-50%);
   margin-top: -52px;
 }
-header .texts .name {
-  font-size: 50px;
-  font-weight: 700;
-}
-header .texts h3 {
-  font-weight: 600;
-  font-size: 40px;
-  font-style: italic;
-  text-align: center;
-}
+
 header .texts .hero-title {
   font-size: 50px;
   font-weight: 700;
   margin-bottom: 15px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Helps text pop against the background image */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 header .texts .hero-subtitle {
@@ -121,7 +120,7 @@ header .texts .hero-subtitle {
 
 .btn-hero {
   display: inline-block;
-  background: #b08a4f; /* Your Happy Oak golden-brown color! */
+  background: #b08a4f;
   color: #fff;
   padding: 15px 35px;
   font-size: 20px;
@@ -135,178 +134,114 @@ header .texts .hero-subtitle {
 }
 
 .btn-hero:hover {
-  background: #8e6c38; /* Slightly darker shade for the hover effect */
+  background: #8e6c38;
   color: #fff;
-  transform: translateY(-2px); /* Makes the button "lift" when hovered */
+  transform: translateY(-2px);
 }
-/******************  Main  ******************/
+
+/****************** Main  ******************/
 main {
   background: url(../img/HOPLogoBG.png);
   background-repeat: repeat;
 }
 
-/******************  About  ******************/
-
+/****************** About  ******************/
 main .about {
-  position: relative;
-  min-height: 400px;
-  padding: 60px 0;
+  padding: 80px 0; /* Gives nice breathing room top and bottom */
   background: none;
 }
+
 main .about .container {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  display: block;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
 }
+
 main .about .picture {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+  /* position: relative; */
+  width: 40%; /* Small image on the left */
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
 }
+
 main .about .picture img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.7;
-  filter: blur(1px);
+  height: auto; /* Lets the image scale naturally */
+  display: block;
 }
 
-main .about article {
-  position: fixed;
-  top: 500px; /* Adjust as needed for your header height */
-  left: 20%;
-  transform: translateX(-50%);
-  width: 60%;
-  min-width: 260px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 40px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  z-index: 2;
+main .about article.about-static-box {
+  /* position: relative; */
+  width: 60%; /* Larger text area on the right */
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: left;
 }
 
-main .about article h3 {
+main .about article.about-static-box h3 {
   font-size: 40px;
-  font-weight: 300;
+  font-weight: 700;
   margin-bottom: 20px;
+  color: var(--brown);
 }
-main .about article p {
+
+main .about article.about-static-box p {
   line-height: 28px;
   margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #333;
 }
 
-@media screen and (max-width: 800px) {
-  main .about .container {
-    height: auto;
-    min-height: 300px;
-  }
-  main .about article {
-    width: 90%;
-    padding: 20px;
-  }
-}
-@media screen and (max-width: 400px) {
-  main .about article h3 {
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
-}
-
-/******************  Services  ******************/
-main .services {
-  padding-top: 50px;
-  margin-bottom: 50px;
-}
-main .services .title {
-  font-size: 40px;
-  font-weight: 400;
-  text-align: center;
-  margin-bottom: 40px;
-}
+/****************** Services  ******************/
 main .services .container {
-  border: 1px double var(--brown);
-  background: var(--white);
-  color: var(--black);
-  padding: 10px;
-  overflow: hidden;
+  background: transparent; /* Removes the old double border and white background */
+  border: none;
+  padding: 0;
 }
-main .services .service {
-  font-weight: 700;
-  margin-bottom: 40px;
-  text-align: center;
+
+.service-card {
+  border-radius: 12px;
+  overflow: hidden; /* Keeps the top corners of the image rounded */
+  background: #fff;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
-main .services .service {
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 4px dotted var(--black);
-  overflow: hidden;
-  display: flex;
-}
-main .services .service-title {
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-}
-main .service .description-text {
-  font-size: 16px;
-  font-weight: normal;
-  text-align: left;
-  padding: 10px;
-}
-main .service .description {
-  font-size: 16px;
-  width: 100%;
-  margin-bottom: 15px;
-  float: left;
-}
-main .services .picture {
-  margin-bottom: 15px;
-  width: 100%;
-}
+
 .service-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  transition: all 0.2s;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
 }
-/******************  Gallery  ******************/
+
+.service-img {
+  height: 250px; /* Forces all images to be exactly the same height */
+  object-fit: cover; /* Crops the image smartly instead of stretching it */
+  width: 100%;
+}
+
+/****************** Gallery  ******************/
 main .gallery {
   overflow: hidden;
 }
+
 main .gallery .title {
   font-size: 40px;
   font-weight: 400;
   text-align: center;
   margin-bottom: 40px;
 }
-main .gallery .picture {
-  width: 50%;
-  float: left;
-}
-main .gallery .picture img {
-  width: 100%;
-  vertical-align: top;
-  opacity: 0.7;
-}
-main .gallery .picture:hover img {
-  opacity: 1;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.9s ease;
-  transition: all 0.9s ease;
-}
 
-/******************  Gallery Responsive Grid  ******************/
 main .gallery .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
   margin-bottom: 40px;
 }
+
 main .gallery .grid-item {
   position: relative;
   overflow: hidden;
@@ -315,25 +250,23 @@ main .gallery .grid-item {
   background: #fff;
   transition: transform 0.2s;
 }
-.grid-item img {
+
+main .gallery .grid-item img {
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
-  border-radius: 10px;
-  display: block;
-}
-main .gallery .grid-item img {
-  width: 100%;
   display: block;
   transition:
     opacity 0.3s,
     transform 0.3s;
   opacity: 0.85;
 }
+
 main .gallery .grid-item:hover img {
   opacity: 1;
   transform: scale(1.04);
 }
+
 main .gallery .caption {
   position: absolute;
   bottom: 0;
@@ -347,108 +280,103 @@ main .gallery .caption {
   transition: opacity 0.3s;
   text-align: center;
 }
+
 main .gallery .grid-item:hover .caption {
   opacity: 1;
 }
 
-@media screen and (max-width: 600px) {
-  main .gallery .grid {
-    gap: 12px;
-  }
-  main .gallery .caption {
-    font-size: 0.9rem;
-    padding: 6px 8px;
-  }
+/* Gallery Filter Buttons */
+.filter-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
 }
 
-/* ******************  Reviews  ******************/
-.reviews .container {
-  background-color: beige;
-  padding: 30px;
-  text-align: center;
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--brown);
+  color: var(--brown);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-main .reviews .title {
-  text-align: Center;
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--brown);
+  color: #fff;
+}
+
+/* Class used by Javascript to hide items */
+.grid-item.hide {
+  display: none;
+}
+
+/* ****************** Reviews  ******************/
+.reviews {
+  background-color: #fcfbf9; /* A softer, modern beige */
+}
+
+.reviews .title {
   font-size: 40px;
-  line-height: 40px;
-  font-weight: 400;
-  margin-bottom: 40px;
-}
-main .reviews .text {
-  text-align: Center;
-  font-size: 20px;
-  line-height: 40px;
-  font-weight: 300;
+  font-weight: 700;
   margin-bottom: 40px;
 }
 
 .testimonial-card {
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  padding: 28px 24px;
-  margin-bottom: 24px;
-  position: relative;
-}
-.testimonial-card h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.testimonial-card .paragraph {
-  font-size: 1.1rem;
-  color: #333;
-  font-style: italic;
-  line-height: 1.5; /* Try lowering this value if you want lines closer together */
-  margin-bottom: 0;
-}
-.quote-mark {
-  font-size: 2rem;
-  color: #b08a4f;
-  vertical-align: top;
-}
-/******************  Contact  ******************/
-main .contact .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  text-align: center;
-}
-main .contact .address,
-main .contact .phones {
-  flex: 1 1 100%;
-  margin-bottom: 20px;
-}
-@media (min-width: 768px) {
-  main .contact .address,
-  main .contact .phones {
-    flex: 1 1 48%;
-    text-align: left;
-  }
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  border-top: 4px solid var(--brown); /* Adds a nice branded accent line to the top of each card */
+  transition: transform 0.3s ease;
 }
 
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.review-img-container {
+  width: 100%;
+  height: 180px; /* Keeps the photos a consistent, compact height */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.review-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crops the image smartly to fit the box */
+}
+
+.quote-mark {
+  font-size: 3rem;
+  color: #e2d1b8; /* A lighter shade of brown so it doesn't distract from the text */
+  font-family: Georgia, serif; /* Serifs make quote marks look much better */
+  line-height: 1;
+}
+
+.testimonial-card .paragraph {
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/****************** Contact  ******************/
 main .contact {
   background: var(--white);
-  padding: 60px;
+  padding: 60px 0;
 }
+
 main .contact .title {
-  text-align: Center;
+  text-align: center;
   font-size: 40px;
-  line-height: 40px;
   font-weight: 400;
   margin-bottom: 40px;
-}
-main .contact .address {
-  float: left;
-  width: 50%;
-  text-align: left;
-  font-size: 22px;
-}
-main .contact .phones {
-  float: right;
-  width: 50%;
-  text-align: right;
-  font-size: 22px;
 }
 
 .contact-card {
@@ -458,64 +386,66 @@ main .contact .phones {
   padding: 28px 24px;
   margin-bottom: 24px;
   font-size: 1.1rem;
+  text-align: left;
 }
+
 .contact-icon {
   font-size: 1.3em;
   color: #b08a4f;
   margin-right: 8px;
   vertical-align: middle;
 }
-/******************  Footer  ******************/
+
+/****************** Footer  ******************/
 footer {
-  background: var(--brown, #6d4c2f);
-  color: var(--white, #fff);
-  padding: 24px 0 12px 0;
+  background: var(--brown); /* Uses your rich dark brown */
+  color: var(--white);
 }
-.footer-links {
-  margin-bottom: 8px;
+
+.footer-links-vertical li {
+  margin-bottom: 12px;
 }
-.footer-links a {
-  color: #ffe7b3;
+
+.footer-links-vertical a {
+  color: #ffe7b3; /* Your golden accent color */
   text-decoration: none;
-  margin: 0 8px;
-  font-size: 1rem;
-  transition: color 0.2s;
+  font-size: 0.95rem;
+  transition:
+    color 0.3s ease,
+    padding-left 0.3s ease;
+  display: inline-block;
 }
-.footer-links a:hover {
+
+.footer-links-vertical a:hover {
   color: #fff;
-  text-decoration: underline;
+  padding-left: 6px; /* Adds a really sleek little "slide right" animation when hovered */
 }
-footer .copyright {
-  text-align: center;
-  font-size: 0.98rem;
+
+.footer-social {
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
-.footer-social img {
-  filter: grayscale(30%);
-  transition: filter 0.2s;
+
+.footer-social:hover {
+  transform: scale(1.1); /* Makes the Facebook icon pop slightly when hovered */
 }
-.footer-social img:hover {
-  filter: none;
-}
-/******************  Media Querries  ******************/
+
+/****************** Mobile Media Queries  ******************/
 @media screen and (max-width: 800px) {
+  /* Header Adjustments */
   header .container {
-    position: static;
     height: auto;
   }
   header .texts {
     position: static;
-    margin: 100px 0;
+    margin: 80px 0;
+    transform: none;
   }
   header .menu {
     text-align: center;
   }
   header .menu a {
-    margin: 10px 20px;
-  }
-  header .texts .name {
-    font-size: 30px;
-  }
-  header .texts h3 {
+    margin: 10px 15px;
     font-size: 18px;
   }
   header .texts .hero-title {
@@ -524,55 +454,48 @@ footer .copyright {
   header .texts .hero-subtitle {
     font-size: 18px;
   }
-  main .about .picture {
+
+  /* About Section Adjustments */
+  main .about .container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  main .about .picture,
+  main .about article.about-static-box {
     width: 100%;
-    position: relative;
+    text-align: center;
   }
-  main .about article {
-    position: relative;
-    width: 100%;
-    margin: auto;
-    top: -50px;
-    transform: translate(0px, 0);
+  main .about article.about-static-box p {
+    font-size: 1rem;
   }
-  main .services {
-    padding-top: 300px;
+
+  /* Gallery Adjustments */
+  main .gallery .grid {
+    gap: 12px;
   }
-  main .services .service {
-    width: 100%;
+  main .gallery .caption {
+    font-size: 0.9rem;
+    padding: 6px 8px;
   }
-  main .service .desription {
-    width: 50%;
-  }
-  main .service .picture {
-    width: 50%;
-  }
-  main .contact .title {
+
+  /* Typography Scaling */
+  main .contact .title,
+  main .services .title,
+  main .gallery .title,
+  main .reviews .title {
     font-size: 30px;
   }
-  main .contact .address {
-    width: 100%;
-    font-size: 22px;
-    text-align: center;
-  }
-  main .contact .phones {
-    width: 100%;
-    font-size: 22px;
-    text-align: center;
-  }
 }
+
 @media screen and (max-width: 400px) {
-  main .about article h3 {
-    font-size: 34px;
-    margin-bottom: 10px;
+  header .texts .hero-title {
+    font-size: 28px;
   }
-  main .contact .title {
-    font-size: 22px;
+  main .about article.about-static-box h3 {
+    font-size: 28px;
   }
-  main .contact .address {
+  .btn-hero {
     font-size: 16px;
-  }
-  main .contact .phones {
-    font-size: 16px;
+    padding: 12px 24px;
   }
 }
