@@ -5,7 +5,12 @@ exports.handler = async function (event, context) {
 
   try {
     // --- NEW: We are now receiving an array of 'messages' instead of a single 'message' ---
-    const { messages } = JSON.parse(event.body);
+    const bodyData = JSON.parse(event.body);
+    // If the browser sends the old format, convert it to the new format automatically!
+    const messages = bodyData.messages || [
+      { role: "user", content: bodyData.message },
+    ];
+
     const apiKey = process.env.GROQ_API_KEY;
 
     const systemPrompt = `You are the Happy Oak Painting Assistant. You are highly professional, direct, and concise.
