@@ -505,3 +505,127 @@ footer {
     padding: 12px 24px;
   }
 }
+
+/* ****************** Chatbot Widget ****************** */
+#chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--trusty-blue);
+  color: var(--white);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition:
+    transform 0.3s,
+    background 0.3s;
+}
+
+#chat-toggle:hover {
+  background: var(--oak-brown);
+  transform: translateY(-3px);
+}
+
+#chat-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  height: 450px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+.chat-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+#chat-header {
+  background: var(--trusty-blue);
+  color: var(--white);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#close-chat {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#chat-messages {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--beige);
+}
+
+.message {
+  padding: 10px 14px;
+  border-radius: 8px;
+  max-width: 80%;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.bot-message {
+  background: #e9ecef;
+  color: var(--dark-text);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.user-message {
+  background: var(--trusty-blue);
+  color: var(--white);
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+#chat-input-area {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background: var(--white);
+}
+
+#chat-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+#send-chat {
+  background: var(--trusty-blue);
+  color: var(--white);
+  border: none;
+  padding: 8px 15px;
+  margin-left: 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
