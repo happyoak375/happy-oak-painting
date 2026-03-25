@@ -4,7 +4,8 @@ exports.handler = async function (event, context) {
   }
 
   try {
-    const { message } = JSON.parse(event.body);
+    // --- NEW: We are now receiving an array of 'messages' instead of a single 'message' ---
+    const { messages } = JSON.parse(event.body);
     const apiKey = process.env.GROQ_API_KEY;
 
     const systemPrompt = `You are the Happy Oak Painting Assistant. You are highly professional, direct, and concise.
@@ -16,7 +17,12 @@ exports.handler = async function (event, context) {
         5. If you do not have the customer's contact info, end by asking for their name, email, phone number, and project type.
         6. IF THE CUSTOMER PROVIDES THEIR NAME, EMAIL AND PHONE NUMBER: Stop asking questions. You MUST respond exactly with: "Thank you for your information. We will contact you as soon as possible to schedule a visit."`;
 
-    // 1. Get the normal chat reply from Groq
+    // --- NEW: Combine the rules with the entire conversation history ---
+    const apiMessages = [
+      { role: "system", content: systemPrompt },
+      ...messages,
+    ];
+
     const response = await fetch(
       "https://api.groq.com/openai/v1/chat/completions",
       {
@@ -27,10 +33,7 @@ exports.handler = async function (event, context) {
         },
         body: JSON.stringify({
           model: "llama-3.1-8b-instant",
-          messages: [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: message },
-          ],
+          messages: apiMessages,
           max_tokens: 150,
         }),
       },
@@ -50,12 +53,14 @@ exports.handler = async function (event, context) {
 
     const botReply = data.choices[0].message.content;
 
-    // 2. THE TRIGGER: Did the bot just close the deal?
+    // THE TRIGGER: Did the bot just close the deal?
     if (botReply.includes("Thank you for your information")) {
-      // We wrap this in a try/catch so if the email fails, the customer still gets their reply!
       try {
-        // A. Ask Groq to extract the clean data
-        const extractorPrompt = `Extract the customer's Name, Email, Phone, and Project from this message: '${message}'. Format it exactly like this:\nName: [Name]\nEmail: [Email]\nPhone: [Phone]\nProject: [Project]\nDo not add any other words.`;
+        // --- NEW: Give the extractor the whole conversation text so it finds all the details ---
+        const conversationText = messages
+          .map((m) => `${m.role}: ${m.content}`)
+          .join("\n");
+        const extractorPrompt = `Extract the customer's Name, Email, Phone, and Project from this conversation history:\n${conversationText}\n\nFormat it exactly like this:\nName: [Name]\nEmail: [Email]\nPhone: [Phone]\nProject: [Project]\nDo not add any other words.`;
 
         const extractResponse = await fetch(
           "https://api.groq.com/openai/v1/chat/completions",
@@ -76,7 +81,7 @@ exports.handler = async function (event, context) {
         const extractData = await extractResponse.json();
         const cleanLeadData = extractData.choices[0].message.content;
 
-        // B. Send the email via Web3Forms
+        // Send the email via Web3Forms
         await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: {
@@ -95,7 +100,6 @@ exports.handler = async function (event, context) {
       }
     }
 
-    // 3. Always return the bot's reply to the customer
     return {
       statusCode: 200,
       body: JSON.stringify({ reply: botReply }),

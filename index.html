@@ -1064,6 +1064,9 @@
       const chatInput = document.getElementById("chat-input");
       const sendChat = document.getElementById("send-chat");
 
+      // --- NEW: Create a memory array for the bot ---
+      let conversationHistory = [];
+
       // Open and close the chat window
       chatToggle.addEventListener("click", () => {
         chatContainer.classList.remove("chat-hidden");
@@ -1094,16 +1097,19 @@
         addMessage(text, "user");
         chatInput.value = "";
 
+        // --- NEW: Save the user's message to the memory array ---
+        conversationHistory.push({ role: "user", content: text });
+
         // 2. Show a loading indicator
         addMessage("...", "bot");
         const loadingMessage = chatMessages.lastChild;
 
         try {
-          // 3. Call your secure Netlify Function!
+          // 3. Send the ENTIRE history to the server, not just the single text
           const response = await fetch("/.netlify/functions/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: text }),
+            body: JSON.stringify({ messages: conversationHistory }),
           });
 
           const data = await response.json();
@@ -1112,6 +1118,11 @@
           chatMessages.removeChild(loadingMessage);
           if (data.reply) {
             addMessage(data.reply, "bot");
+            // --- NEW: Save the bot's reply to the memory array ---
+            conversationHistory.push({
+              role: "assistant",
+              content: data.reply,
+            });
           } else {
             addMessage("I'm sorry, I encountered an error.", "bot");
           }
