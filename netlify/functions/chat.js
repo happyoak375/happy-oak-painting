@@ -59,7 +59,11 @@ exports.handler = async function (event, context) {
     const botReply = data.choices[0].message.content;
 
     // THE TRIGGER: Did the bot just close the deal?
-    if (botReply.includes("Thank you for your information")) {
+    if (
+      botReply.includes(
+        "Thank you for your information. We will contact you as soon as possible to schedule a visit.",
+      )
+    ) {
       try {
         // --- NEW: Give the extractor the whole conversation text so it finds all the details ---
         const conversationText = messages
