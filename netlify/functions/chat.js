@@ -90,28 +90,28 @@ exports.handler = async function (event, context) {
 
         console.log("📝 Extracted Data:", cleanLeadData);
 
-// Send the email via Web3Forms
-                const emailResponse = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    body: JSON.stringify({
-                        access_key: process.env.EMAIL_ACCESS_KEY,
-                        subject: "🔔 NEW LEAD: Happy Oak Website Bot",
-                        message: cleanLeadData,
-                        from_name: "Happy Oak Chatbot"
-                    })
-                });
+        // Send the email via Web3Forms
+        const emailResponse = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: process.env.EMAIL_ACCESS_KEY,
+            subject: "🔔 NEW LEAD: Happy Oak Website Bot",
+            message: cleanLeadData,
+            from_name: "Happy Oak Chatbot",
+          }),
+        });
 
-                // Read the response as raw text first so it doesn't crash on HTML errors
-                const emailResultText = await emailResponse.text();
-                console.log("✉️ Web3Forms Response:", emailResultText); 
-                
-            } catch (backgroundError) {
-                console.error("Background task failed:", backgroundError);
-            }
+        // Read the response as raw text first so it doesn't crash on HTML errors
+        const emailResultText = await emailResponse.text();
+        console.log("✉️ Web3Forms Response:", emailResultText);
+      } catch (backgroundError) {
+        console.error("Background task failed:", backgroundError);
+      }
+    }
     return {
       statusCode: 200,
       body: JSON.stringify({ reply: botReply }),
