@@ -59,13 +59,11 @@ exports.handler = async function (event, context) {
     const botReply = data.choices[0].message.content;
 
     // THE TRIGGER: Did the bot just close the deal?
-    if (
-      botReply.includes(
-        "Thank you for your information. We will contact you as soon as possible to schedule a visit.",
-      )
-    ) {
+    // THE TRIGGER: Did the bot just close the deal?
+    if (botReply.includes("Thank you for your information")) {
+      console.log("🎯 TRIGGER HIT! Starting background extraction...");
+
       try {
-        // --- NEW: Give the extractor the whole conversation text so it finds all the details ---
         const conversationText = messages
           .map((m) => `${m.role}: ${m.content}`)
           .join("\n");
@@ -90,8 +88,10 @@ exports.handler = async function (event, context) {
         const extractData = await extractResponse.json();
         const cleanLeadData = extractData.choices[0].message.content;
 
+        console.log("📝 Extracted Data:", cleanLeadData);
+
         // Send the email via Web3Forms
-        await fetch("https://api.web3forms.com/submit", {
+        const emailResponse = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -104,6 +104,9 @@ exports.handler = async function (event, context) {
             from_name: "Happy Oak Chatbot",
           }),
         });
+
+        const emailResult = await emailResponse.json();
+        console.log("✉️ Web3Forms Response:", emailResult);
       } catch (backgroundError) {
         console.error("Background task failed:", backgroundError);
       }
