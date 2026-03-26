@@ -89,29 +89,30 @@ exports.handler = async function (event, context) {
         const cleanLeadData = extractData.choices[0].message.content;
 
         console.log("📝 Extracted Data:", cleanLeadData);
+// Send the email via EmailJS
+                const emailResponse = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        service_id: process.env.EMAILJS_SERVICE_ID,
+                        template_id: process.env.EMAILJS_TEMPLATE_ID,
+                        user_id: process.env.EMAILJS_PUBLIC_KEY,
+                        accessToken: process.env.EMAILJS_PRIVATE_KEY,
+                        template_params: {
+                            message: cleanLeadData
+                        }
+                    })
+                });
 
-        // Send the email via Web3Forms
-        const emailResponse = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            access_key: process.env.EMAIL_ACCESS_KEY,
-            subject: "🔔 NEW LEAD: Happy Oak Website Bot",
-            message: cleanLeadData,
-            from_name: "Happy Oak Chatbot",
-          }),
-        });
-
-        // Read the response as raw text first so it doesn't crash on HTML errors
-        const emailResultText = await emailResponse.text();
-        console.log("✉️ Web3Forms Response:", emailResultText);
-      } catch (backgroundError) {
-        console.error("Background task failed:", backgroundError);
-      }
-    }
+                const emailResultText = await emailResponse.text();
+                console.log("✉️ EmailJS Response:", emailResultText); 
+                
+            } catch (backgroundError) {
+                console.error("Background task failed:", backgroundError);
+            }
+          }
     return {
       statusCode: 200,
       body: JSON.stringify({ reply: botReply }),
